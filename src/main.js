@@ -118,15 +118,36 @@ function createPoster(imageURL, title, quote) {
     quote: quote}
 }
 
-console.log("Just breathe; you got this!")
-
-
-// When the page loads, users should see a poster with a randomly selected image, title, and quote
-// Every time the user clicks the Show Random Poster button, a new random poster is displayed.
-
-// Add a main picture
-// 1. Query elements to show where it should be going. 
+// Query Elements
 mainImg = document.querySelector('#main-img')
-// 2. Add and event listener --> load page
-//3. Add a function that adds an image to (inner.HTML?) to the src speciffically
-// This should be randomly selecting a motivational image. 
+mainTitle = document.querySelector('#main-title')
+mainQuote = document.querySelector('#main-quote')
+
+// Event Listeners
+window.addEventListener('load', addMainImg) 
+window.addEventListener('load', changeTitleRandomly) 
+window.addQuoteRandomly('load', addQuoteRandomly)
+
+
+// Functions
+function addMainImg() {
+  var randomImgIndex = Math.floor(Math.random() * images.length);
+  console.log(randomImgIndex, images[randomImgIndex]);
+
+  mainImg.src = images[randomImgIndex]
+  mainImg.alt = 'Random image is displayed here.'
+}
+
+function changeTitleRandomly() {
+  var randomTitleIndex = Math.floor(Math.random() * titles.length);
+  console.log(randomTitleIndex, titles[randomTitleIndex]);
+
+  mainTitle.innerText = titles[randomTitleIndex]
+}
+
+function addQuoteRandomly() {
+  var randomQuoteIndex = Math.floor(Math.random() * quotes.length);
+  console.log(randomQuoteIndex, quotes[randomQuoteIndex]);
+
+  mainQuote.innerText = quotes[randomQuoteIndex]
+}
