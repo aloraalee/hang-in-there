@@ -126,7 +126,22 @@ console.log("Just breathe; you got this!")
 
 // Add a main picture
 // 1. Query elements to show where it should be going. 
-mainImg = document.querySelector('#main-img')
 // 2. Add and event listener --> load page
 //3. Add a function that adds an image to (inner.HTML?) to the src speciffically
 // This should be randomly selecting a motivational image. 
+// It looks like the variable images is an array of animal images and 
+// it can be used with a method to randomly select an index of the array to populate
+// when the event listener occurs
+
+mainImg = document.querySelector('#main-img')
+
+window.addEventListener('load', addMainImg) 
+
+
+function addMainImg() {
+  var randomImgIndex = Math.floor(Math.random() * images.length);
+  console.log(randomImgIndex, images[randomImgIndex]);
+
+  mainImg.src = images[randomImgIndex]
+  mainImg.alt = 'Random image is displayed here'
+}
