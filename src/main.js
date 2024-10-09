@@ -119,14 +119,16 @@ function createPoster(imageURL, title, quote) {
 }
 
 // Query Elements
-mainImg = document.querySelector('#main-img')
-mainTitle = document.querySelector('#main-title')
-mainQuote = document.querySelector('#main-quote')
+var mainImg = document.querySelector('#main-img')
+var mainTitle = document.querySelector('#main-title')
+var mainQuote = document.querySelector('#main-quote')
+var randomPosterBtn = document.querySelector('#show-random-button')
 
 // Event Listeners
 window.addEventListener('load', addMainImg) 
 window.addEventListener('load', changeTitleRandomly) 
 window.addQuoteRandomly('load', addQuoteRandomly)
+randomPosterBtn.addEventListener('click', showRandomPoster)
 
 
 // Functions
@@ -150,4 +152,8 @@ function addQuoteRandomly() {
   console.log(randomQuoteIndex, quotes[randomQuoteIndex]);
 
   mainQuote.innerText = quotes[randomQuoteIndex]
+}
+
+function showRandomPoster() {
+
 }
