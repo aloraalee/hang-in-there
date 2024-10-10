@@ -14,6 +14,7 @@ var backToMainBtn = document.querySelector('.back-to-main')
 var imgUrlInput = document.querySelector('#poster-image-url')
 var titleInput = document.querySelector('#poster-title')
 var quoteInput = document.querySelector('#poster-quote')
+var savePosterBtn = document.querySelector('#save-poster')
 
 var images = [
   "./assets/bees.jpg",
@@ -123,6 +124,7 @@ takeMeBackBtn.addEventListener('click', takeMeBack)
 showMyPosterBtn.addEventListener('click', createYourOwnPoster)
 showSavedPostersBtn.addEventListener('click', showSavedPosters)
 backToMainBtn.addEventListener('click', takeMeBack)
+savePosterBtn.addEventListener('click', saveThisPoster)
 
 // functions and event handlers go here 👇
 function getRandomIndex(array) {
@@ -190,3 +192,12 @@ function createYourOwnPoster(event) {
   mainPoster.classList.remove('hidden');
 }
 
+// When a user clicks the “Save This Poster” button, 
+//the current main poster will be added to the savedPosters array.
+
+function saveThisPoster() {
+  savedPosters.push(currentPoster);
+
+  console.log('This poster was saved')
+  console.log('saved poster array:', savedPosters)
+}
