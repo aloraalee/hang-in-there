@@ -4,6 +4,9 @@ var mainTitle = document.querySelector('#main-title')
 var mainQuote = document.querySelector('#main-quote')
 var randomPosterBtn = document.querySelector('#show-random-poster-btn')
 var createOwnPosterBtn = document.querySelector('#show-form-btn')
+var mainPoster = document.querySelector('.main-poster')
+var posterForm = document.querySelector('.poster-form')
+var takeMeBackBtn = document.querySelector('.show-main')
 
 var images = [
   "./assets/bees.jpg",
@@ -109,6 +112,7 @@ var currentPoster;
 window.addEventListener('load', updatePoster) 
 randomPosterBtn.addEventListener('click', updatePoster)
 createOwnPosterBtn.addEventListener('click', showForm)
+takeMeBackBtn.addEventListener('click', takeMeBack)
 
 // functions and event handlers go here 👇
 function getRandomIndex(array) {
@@ -133,26 +137,15 @@ function updatePoster() {
   mainTitle.innerText = getRandomElement(titles);
   mainQuote.innerText = getRandomElement(quotes);
 
-  mainPoster = createPoster(mainImg.src, mainTitle.innerText, mainQuote.innerText);
+  currentPoster = createPoster(mainImg.src, mainTitle.innerText, mainQuote.innerText);
 }
 
-function showForm() {
-
-
-  
-  console.log('click Make Your Own Poster', event)
-  console.log('event.target:', event.target )
+function showForm(event) {
+  mainPoster.classList.add('hidden');
+  posterForm.classList.remove('hidden');
 }
 
-// When a user clicks the “Make Your Own Poster” button, we should see the form, 
-// and the main poster should be hidden
-
-// 1. Query:
-// make your own poster button
-// the form and the three boxes to input info to (image url, motivational poster title, 
-// and motivational poster-quote)
-// 2. Event element:
-// make your own poster button
-// 3. Function:
-// the form appears
-// the current poster is hidden
+function takeMeBack (event) {
+  posterForm.classList.add('hidden');
+  mainPoster.classList.remove('hidden');
+}
