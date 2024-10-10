@@ -105,14 +105,16 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-window.addEventListener('load', addMainImg) 
-window.addEventListener('load', changeTitleRandomly) 
-window.addQuoteRandomly('load', addQuoteRandomly)
-randomPosterBtn.addEventListener('click', showRandomPoster)
+window.addEventListener('load', updatePoster) 
+randomPosterBtn.addEventListener('click', updatePoster)
 
 // functions and event handlers go here 👇
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
+}
+
+function getRandomElement(array) {
+  return array[getRandomIndex(array)]
 }
 
 function createPoster(imageURL, title, quote) {
@@ -123,41 +125,11 @@ function createPoster(imageURL, title, quote) {
     quote: quote}
 }
 
+function updatePoster() {
+  mainImg.src = getRandomElement(images);
+  mainImg.alt = 'Random motivational image';
+  mainTitle.innerText = getRandomElement(titles);
+  mainQuote.innerText = getRandomElement(quotes);
 
-function addMainImg() {
-  var randomImgIndex = Math.floor(Math.random() * images.length);
-  console.log(randomImgIndex, images[randomImgIndex]);
-
-  mainImg.src = images[randomImgIndex]
-  mainImg.alt = 'Random image is displayed here.'
-}
-
-function changeTitleRandomly() {
-  var randomTitleIndex = Math.floor(Math.random() * titles.length);
-  console.log(randomTitleIndex, titles[randomTitleIndex]);
-
-  mainTitle.innerText = titles[randomTitleIndex]
-}
-
-function addQuoteRandomly() {
-  var randomQuoteIndex = Math.floor(Math.random() * quotes.length);
-  console.log(randomQuoteIndex, quotes[randomQuoteIndex]);
-
-  mainQuote.innerText = quotes[randomQuoteIndex]
-}
-
-function showRandomPoster() {
-  var randomImgIndex = Math.floor(Math.random() * images.length);
-  console.log(randomImgIndex, images[randomImgIndex]);
-
-  var randomTitleIndex = Math.floor(Math.random() * titles.length);
-  console.log(randomTitleIndex, titles[randomTitleIndex]);
-
-  var randomQuoteIndex = Math.floor(Math.random() * quotes.length);
-  console.log(randomQuoteIndex, quotes[randomQuoteIndex]);
-
-  mainImg.src = images[randomImgIndex]
-  mainImg.alt = 'Random image is displayed here.'
-  mainTitle.innerText = titles[randomTitleIndex]
-  mainQuote.innerText = quotes[randomQuoteIndex]
+  currentPoster = createPoster(mainImg.src, mainTitle.innerText, mainQuote.innerText);
 }
