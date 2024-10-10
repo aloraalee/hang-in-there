@@ -196,8 +196,11 @@ function createYourOwnPoster(event) {
 //the current main poster will be added to the savedPosters array.
 
 function saveThisPoster() {
-  savedPosters.push(currentPoster);
+  if (savedPosters.includes(currentPoster) === false) {
+    savedPosters.push(currentPoster);
 
   console.log('This poster was saved')
   console.log('saved poster array:', savedPosters)
+  }
+
 }
