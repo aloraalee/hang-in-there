@@ -4,6 +4,8 @@ var mainTitle = document.querySelector('#main-title')
 var mainQuote = document.querySelector('#main-quote')
 var randomPosterBtn = document.querySelector('#show-random-poster-btn')
 var createOwnPosterBtn = document.querySelector('#show-form-btn')
+var mainPoster = document.querySelector('.main-poster')
+var posterForm = document.querySelector('.poster-form')
 
 var images = [
   "./assets/bees.jpg",
@@ -133,13 +135,14 @@ function updatePoster() {
   mainTitle.innerText = getRandomElement(titles);
   mainQuote.innerText = getRandomElement(quotes);
 
-  mainPoster = createPoster(mainImg.src, mainTitle.innerText, mainQuote.innerText);
+  currentPoster = createPoster(mainImg.src, mainTitle.innerText, mainQuote.innerText);
 }
 
-function showForm() {
+function showForm(event) {
 
+  mainPoster.classList.add('hidden');
+  posterForm.classList.remove('hidden');
 
-  
   console.log('click Make Your Own Poster', event)
   console.log('event.target:', event.target )
 }
