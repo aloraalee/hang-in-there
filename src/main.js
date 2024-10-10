@@ -4,8 +4,6 @@ var mainTitle = document.querySelector('#main-title')
 var mainQuote = document.querySelector('#main-quote')
 var randomPosterBtn = document.querySelector('#show-random-poster-btn')
 
-// we've provided you with some data to work with 👇
-// tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -113,7 +111,6 @@ window.addQuoteRandomly('load', addQuoteRandomly)
 randomPosterBtn.addEventListener('click', showRandomPoster)
 
 // functions and event handlers go here 👇
-// (we've provided two to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
