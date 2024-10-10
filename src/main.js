@@ -122,7 +122,7 @@ function createPoster(imageURL, title, quote) {
 var mainImg = document.querySelector('#main-img')
 var mainTitle = document.querySelector('#main-title')
 var mainQuote = document.querySelector('#main-quote')
-var randomPosterBtn = document.querySelector('#show-random-button')
+var randomPosterBtn = document.querySelector('#show-random-poster-btn')
 
 // Event Listeners
 window.addEventListener('load', addMainImg) 
@@ -155,5 +155,17 @@ function addQuoteRandomly() {
 }
 
 function showRandomPoster() {
+  var randomImgIndex = Math.floor(Math.random() * images.length);
+  console.log(randomImgIndex, images[randomImgIndex]);
 
+  var randomTitleIndex = Math.floor(Math.random() * titles.length);
+  console.log(randomTitleIndex, titles[randomTitleIndex]);
+
+  var randomQuoteIndex = Math.floor(Math.random() * quotes.length);
+  console.log(randomQuoteIndex, quotes[randomQuoteIndex]);
+
+  mainImg.src = images[randomImgIndex]
+  mainImg.alt = 'Random image is displayed here.'
+  mainTitle.innerText = titles[randomTitleIndex]
+  mainQuote.innerText = quotes[randomQuoteIndex]
 }
