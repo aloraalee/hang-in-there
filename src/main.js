@@ -11,6 +11,9 @@ var allSavedPosters = document.querySelector('.saved-posters')
 var showMyPosterBtn = document.querySelector('.make-poster')
 var showSavedPostersBtn = document.querySelector('#show-saved')
 var backToMainBtn = document.querySelector('.back-to-main')
+var imgUrlInput = document.querySelector('#poster-image-url')
+var titleInput = document.querySelector('#poster-title')
+var quoteInput = document.querySelector('#poster-quote')
 
 var images = [
   "./assets/bees.jpg",
@@ -117,7 +120,7 @@ window.addEventListener('load', updatePoster)
 randomPosterBtn.addEventListener('click', updatePoster)
 createOwnPosterBtn.addEventListener('click', showForm)
 takeMeBackBtn.addEventListener('click', takeMeBack)
-showMyPosterBtn.addEventListener('click', showSavedPosters)
+showMyPosterBtn.addEventListener('click', createYourOwnPoster)
 showSavedPostersBtn.addEventListener('click', showSavedPosters)
 backToMainBtn.addEventListener('click', takeMeBack)
 
@@ -159,7 +162,31 @@ function showSavedPosters() {
 }
 
 function takeMeBack () {
-  posterForm.classList.add('hidden');
   allSavedPosters.classList.add('hidden');
   mainPoster.classList.remove('hidden');
 }
+
+function createYourOwnPoster(event) {
+  event.preventDefault();
+
+  var newImageUrl = imgUrlInput.value;
+  var newTitle = titleInput.value;
+  var newQuote = quoteInput.value;
+
+  mainImg.src = newImageUrl;
+  mainImg.alt = 'User-made motivational image';
+  mainTitle.innerText = newTitle;
+  mainQuote.innerText = newQuote;
+
+  var newPoster = createPoster(newImageUrl, newTitle, newQuote)
+
+  currentPoster = newPoster
+
+  images.push(newImageUrl);
+  titles.push(newTitle);
+  quotes.push(newQuote);
+
+  posterForm.classList.add('hidden');
+  mainPoster.classList.remove('hidden');
+}
+
