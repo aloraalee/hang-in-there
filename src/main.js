@@ -7,6 +7,8 @@ var createOwnPosterBtn = document.querySelector('#show-form-btn')
 var mainPoster = document.querySelector('.main-poster')
 var posterForm = document.querySelector('.poster-form')
 var takeMeBackBtn = document.querySelector('.show-main')
+var allSavedPosters = document.querySelector('.saved-posters')
+var showMyPosterBtn = document.querySelector('.make-poster')
 
 var images = [
   "./assets/bees.jpg",
@@ -113,6 +115,7 @@ window.addEventListener('load', updatePoster)
 randomPosterBtn.addEventListener('click', updatePoster)
 createOwnPosterBtn.addEventListener('click', showForm)
 takeMeBackBtn.addEventListener('click', takeMeBack)
+// showMyPosterBtn.addEventListener('click', showSavedPosters)
 
 // functions and event handlers go here 👇
 function getRandomIndex(array) {
@@ -144,6 +147,11 @@ function showForm(event) {
   mainPoster.classList.add('hidden');
   posterForm.classList.remove('hidden');
 }
+
+// function showSavedPosters(event) {
+//   posterForm.classList.add('hidden');
+//   allSavedPosters.classList.remove('hidden');
+// }
 
 function takeMeBack (event) {
   posterForm.classList.add('hidden');
