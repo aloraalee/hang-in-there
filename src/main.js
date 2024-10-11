@@ -153,14 +153,17 @@ function updatePoster() {
   currentPoster = createPoster(mainImg.src, mainTitle.innerText, mainQuote.innerText);
 }
 
+function showAndHidePage(view, hide) {
+  view.classList.remove('hidden')
+  hide.classList.add('hidden')
+}
+
 function showForm() {
-  mainPoster.classList.add('hidden');
-  posterForm.classList.remove('hidden');
+  showAndHidePage(posterForm, mainPoster)
 }
 
 function takeMeBack () {
-  allSavedPosters.classList.add('hidden');
-  mainPoster.classList.remove('hidden');
+  showAndHidePage(mainPoster, posterForm)
 }
 
 function createYourOwnPoster(event) {
@@ -197,6 +200,7 @@ function saveThisPoster() {
 }
 
 function showSavedPosters() {
+
   savedPosters.forEach(savedPoster => {
     savedPostersGrid.innerHTML += `
     <article class = "mini-poster">
