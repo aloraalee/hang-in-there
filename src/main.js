@@ -15,6 +15,7 @@ var imgUrlInput = document.querySelector('#poster-image-url')
 var titleInput = document.querySelector('#poster-title')
 var quoteInput = document.querySelector('#poster-quote')
 var savePosterBtn = document.querySelector('#save-poster')
+var savedPostersGrid = document.querySelector('.saved-posters-grid')
 
 var images = [
   "./assets/bees.jpg",
@@ -157,12 +158,6 @@ function showForm() {
   posterForm.classList.remove('hidden');
 }
 
-function showSavedPosters() {
-  mainPoster.classList.add('hidden');
-  posterForm.classList.add('hidden');
-  allSavedPosters.classList.remove('hidden');
-}
-
 function takeMeBack () {
   allSavedPosters.classList.add('hidden');
   mainPoster.classList.remove('hidden');
@@ -192,9 +187,6 @@ function createYourOwnPoster(event) {
   mainPoster.classList.remove('hidden');
 }
 
-// When a user clicks the “Save This Poster” button, 
-//the current main poster will be added to the savedPosters array.
-
 function saveThisPoster() {
   if (savedPosters.includes(currentPoster) === false) {
     savedPosters.push(currentPoster);
@@ -202,5 +194,21 @@ function saveThisPoster() {
   console.log('This poster was saved')
   console.log('saved poster array:', savedPosters)
   }
-
 }
+
+function showSavedPosters() {
+  savedPosters.forEach(savedPoster => {
+    savedPostersGrid.innerHTML += `
+    <article class = "mini-poster">
+    <img class = "mini-poster img" src=${savedPoster.imageURL} alt ="">
+    <h1>${savedPoster.title}</h1>
+    <h3>${savedPoster.quote}</h3>
+    </article>
+    `;
+  })
+  mainPoster.classList.add('hidden');
+  posterForm.classList.add('hidden');
+  allSavedPosters.classList.remove('hidden');
+}
+
+
