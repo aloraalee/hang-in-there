@@ -164,6 +164,7 @@ function showForm() {
 
 function takeMeBack () {
   showAndHidePage(mainPoster, posterForm)
+  showAndHidePage(mainPoster,allSavedPosters)
 }
 
 function createYourOwnPoster(event) {
@@ -186,21 +187,16 @@ function createYourOwnPoster(event) {
   titles.push(newTitle);
   quotes.push(newQuote);
 
-  posterForm.classList.add('hidden');
-  mainPoster.classList.remove('hidden');
+  showAndHidePage(mainPoster, posterForm)
 }
 
 function saveThisPoster() {
   if (savedPosters.includes(currentPoster) === false) {
     savedPosters.push(currentPoster);
-
-  console.log('This poster was saved')
-  console.log('saved poster array:', savedPosters)
   }
 }
 
 function showSavedPosters() {
-
   savedPosters.forEach(savedPoster => {
     savedPostersGrid.innerHTML += `
     <article class = "mini-poster">
@@ -210,9 +206,7 @@ function showSavedPosters() {
     </article>
     `;
   })
-  mainPoster.classList.add('hidden');
-  posterForm.classList.add('hidden');
-  allSavedPosters.classList.remove('hidden');
+  showAndHidePage(allSavedPosters,mainPoster)
 }
 
 
