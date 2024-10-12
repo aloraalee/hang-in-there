@@ -194,19 +194,24 @@ function saveThisPoster() {
   if (savedPosters.includes(currentPoster) === false) {
     savedPosters.push(currentPoster);
   }
+
+  console.log(savedPosters)
 }
 
 function showSavedPosters() {
   savedPosters.forEach(savedPoster => {
-    savedPostersGrid.innerHTML += `
-    <article class = "mini-poster">
-    <img class = "mini-poster img" src=${savedPoster.imageURL} alt ="">
-    <h1>${savedPoster.title}</h1>
-    <h3>${savedPoster.quote}</h3>
-    </article>
-    `;
-  })
-  showAndHidePage(allSavedPosters,mainPoster)
+    if (savedPostersGrid.innerHTML.includes(savedPoster.imageURL && 
+      savedPoster.title && savedPoster.quote) === false) {
+      savedPostersGrid.innerHTML += `
+      <article class="mini-poster">
+        <img class="mini-poster img" src="${savedPoster.imageURL}" alt="">
+        <h1>${savedPoster.title}</h1>
+        <h3>${savedPoster.quote}</h3>
+      </article>
+      `;
+    }
+  });
+  showAndHidePage(allSavedPosters, mainPoster);
 }
 
 
