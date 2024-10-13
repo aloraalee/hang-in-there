@@ -17,7 +17,7 @@ var quoteInput = document.querySelector('#poster-quote')
 var savePosterBtn = document.querySelector('#save-poster')
 var savedPostersGrid = document.querySelector('.saved-posters-grid')
 var unmotivationalBtn = document.querySelector('#unmotivational-posters-btn')
-var showUnmotivationalPosters = document.querySelector('.unmotivational-posters')
+var showMeUnmotivationalPosters = document.querySelector('.unmotivational-posters')
 // backToMainBtns should function together with a querySelectorAll? 
 // There is space to refactor later. 
 var backToMainBtnFromUnmotivational = document.querySelector('#back-to-main-from-unmotivation')
@@ -249,6 +249,7 @@ var unmotivationalPosters = [];
 
 // event listeners go here 👇
 window.addEventListener('load', updatePoster) 
+window.addEventListener('load', saveUnimotivationalPosters)
 randomPosterBtn.addEventListener('click', updatePoster)
 createOwnPosterBtn.addEventListener('click', showForm)
 takeMeBackBtn.addEventListener('click', takeMeBack)
@@ -257,7 +258,7 @@ showSavedPostersBtn.addEventListener('click', showSavedPosters)
 backToMainBtn.addEventListener('click', takeMeBack)
 backToMainBtn.addEventListener('click', clearExistingContent)
 savePosterBtn.addEventListener('click', saveThisPoster)
-unmotivationalBtn.addEventListener('click', showUnimotivationalPosters)
+unmotivationalBtn.addEventListener('click', showUnmotivationalPosters)
 backToMainBtnFromUnmotivational.addEventListener('click', takeMeBack)
 
 // functions and event handlers go here 👇
@@ -298,7 +299,7 @@ function showForm() {
 function takeMeBack () {
   showAndHidePage(mainPoster, posterForm)
   showAndHidePage(mainPoster,allSavedPosters)
-  showAndHidePage(mainPoster,showUnmotivationalPosters)
+  showAndHidePage(mainPoster,showMeUnmotivationalPosters)
 
 }
 
@@ -350,7 +351,7 @@ function showSavedPosters() {
   showAndHidePage(allSavedPosters, mainPoster);
 }
 
-function showUnimotivationalPosters() {
+function saveUnimotivationalPosters() {
   unmotivationalPostersData.forEach(unmotivationalPoster =>{
       let newUnmotivationalPoster = {
         id: Date.now(), 
@@ -361,10 +362,11 @@ function showUnimotivationalPosters() {
     if (unmotivationalPosters.includes(newUnmotivationalPoster) === false) {
       unmotivationalPosters.push(newUnmotivationalPoster);
     }
-
   })
   console.log(unmotivationalPosters)
-  showAndHidePage(showUnmotivationalPosters, mainPoster)
 }
 
+function showUnmotivationalPosters() {
+  showAndHidePage(showMeUnmotivationalPosters, mainPoster)
+}
 
