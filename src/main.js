@@ -22,6 +22,7 @@ var showMeUnmotivationalPosters = document.querySelector('.unmotivational-poster
 // There is space to refactor later. 
 var backToMainBtnFromUnmotivational = document.querySelector('#back-to-main-from-unmotivation')
 var unmotivationalPostersGrid = document.querySelector('.unmotivational-posters-grid')
+var unmotivationalMiniPoster = document.querySelector('.unmotivational-mini-poster')
 
 
 var images = [
@@ -262,6 +263,7 @@ savePosterBtn.addEventListener('click', saveThisPoster)
 unmotivationalBtn.addEventListener('click', showUnmotivationalPosters)
 backToMainBtnFromUnmotivational.addEventListener('click', takeMeBack)
 backToMainBtnFromUnmotivational.addEventListener('click', clearExistingContent)
+unmotivationalPostersGrid.addEventListener('dblclick', deleteSavedPosters)
 
 // functions and event handlers go here 👇
 function getRandomIndex(array) {
@@ -302,7 +304,6 @@ function takeMeBack () {
   showAndHidePage(mainPoster, posterForm)
   showAndHidePage(mainPoster,allSavedPosters)
   showAndHidePage(mainPoster,showMeUnmotivationalPosters)
-
 }
 
 function createYourOwnPoster(event) {
@@ -318,13 +319,11 @@ function createYourOwnPoster(event) {
   mainQuote.innerText = newQuote;
 
   var newPoster = createPoster(newImageUrl, newTitle, newQuote)
-
   currentPoster = newPoster
 
   images.push(newImageUrl);
   titles.push(newTitle);
   quotes.push(newQuote);
-
   showAndHidePage(mainPoster, posterForm)
 }
 
@@ -332,8 +331,6 @@ function saveThisPoster() {
   if (savedPosters.includes(currentPoster) === false) {
     savedPosters.push(currentPoster);
   }
-
-  console.log(savedPosters)
 }
 
 function clearExistingContent() {
@@ -372,13 +369,20 @@ function saveUnimotivationalPosters() {
 function showUnmotivationalPosters() {
   unmotivationalPosters.forEach(unmotivationalPoster => {
     unmotivationalPostersGrid.innerHTML += `
-    <article class="mini-poster">
-      <img class="mini-poster img" src="${unmotivationalPoster.imageURL}" alt="">
-      <h1>${unmotivationalPoster.title}</h1>
-      <h3>${unmotivationalPoster.quote}</h3>
-    </article>
-    `;
-  });
+      <article class="mini-poster">
+        <img class="unmotivational-mini-poster img" src="${unmotivationalPoster.imageURL}" alt="">
+        <h1>${unmotivationalPoster.title}</h1>
+        <h3>${unmotivationalPoster.quote}</h3>
+      </article>
+      `;
+    });
   showAndHidePage(showMeUnmotivationalPosters, mainPoster)
+}
+
+function deleteSavedPosters() {
+  if (event.target.classList.contains('.unmotivational-posters-grid')) {
+    unmotivationalPosters.splice(index, 1)
+    showUnmotivationalPosters
+  }
 }
 
