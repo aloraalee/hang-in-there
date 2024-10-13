@@ -21,6 +21,7 @@ var showMeUnmotivationalPosters = document.querySelector('.unmotivational-poster
 // backToMainBtns should function together with a querySelectorAll? 
 // There is space to refactor later. 
 var backToMainBtnFromUnmotivational = document.querySelector('#back-to-main-from-unmotivation')
+var unmotivationalPostersGrid = document.querySelector('.unmotivational-posters-grid')
 
 
 var images = [
@@ -260,6 +261,7 @@ backToMainBtn.addEventListener('click', clearExistingContent)
 savePosterBtn.addEventListener('click', saveThisPoster)
 unmotivationalBtn.addEventListener('click', showUnmotivationalPosters)
 backToMainBtnFromUnmotivational.addEventListener('click', takeMeBack)
+backToMainBtnFromUnmotivational.addEventListener('click', clearExistingContent)
 
 // functions and event handlers go here 👇
 function getRandomIndex(array) {
@@ -336,6 +338,7 @@ function saveThisPoster() {
 
 function clearExistingContent() {
     savedPostersGrid.innerHTML = ""
+    unmotivationalPostersGrid.innerHTML = ""
 }
 
 function showSavedPosters() {
@@ -367,6 +370,15 @@ function saveUnimotivationalPosters() {
 }
 
 function showUnmotivationalPosters() {
+  unmotivationalPosters.forEach(unmotivationalPoster => {
+    unmotivationalPostersGrid.innerHTML += `
+    <article class="mini-poster">
+      <img class="mini-poster img" src="${unmotivationalPoster.imageURL}" alt="">
+      <h1>${unmotivationalPoster.title}</h1>
+      <h3>${unmotivationalPoster.quote}</h3>
+    </article>
+    `;
+  });
   showAndHidePage(showMeUnmotivationalPosters, mainPoster)
 }
 
