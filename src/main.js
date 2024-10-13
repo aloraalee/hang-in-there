@@ -125,6 +125,7 @@ takeMeBackBtn.addEventListener('click', takeMeBack)
 showMyPosterBtn.addEventListener('click', createYourOwnPoster)
 showSavedPostersBtn.addEventListener('click', showSavedPosters)
 backToMainBtn.addEventListener('click', takeMeBack)
+backToMainBtn.addEventListener('click', clearExistingContent)
 savePosterBtn.addEventListener('click', saveThisPoster)
 
 // functions and event handlers go here 👇
@@ -198,10 +199,12 @@ function saveThisPoster() {
   console.log(savedPosters)
 }
 
+function clearExistingContent() {
+    savedPostersGrid.innerHTML = ""
+}
+
 function showSavedPosters() {
   savedPosters.forEach(savedPoster => {
-    if (savedPostersGrid.innerHTML.includes(savedPoster.imageURL && 
-      savedPoster.title && savedPoster.quote) === false) {
       savedPostersGrid.innerHTML += `
       <article class="mini-poster">
         <img class="mini-poster img" src="${savedPoster.imageURL}" alt="">
@@ -209,7 +212,6 @@ function showSavedPosters() {
         <h3>${savedPoster.quote}</h3>
       </article>
       `;
-    }
   });
   showAndHidePage(allSavedPosters, mainPoster);
 }
