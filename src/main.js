@@ -343,8 +343,8 @@ function showSavedPosters() {
       savedPostersGrid.innerHTML += `
       <article class="mini-poster">
         <img class="mini-poster img" src="${savedPoster.imageURL}" alt="">
-        <h1>${savedPoster.title}</h1>
-        <h3>${savedPoster.quote}</h3>
+        <h2>${savedPoster.title}</h2>
+        <h4>${savedPoster.quote}</h4>
       </article>
       `;
   });
@@ -369,20 +369,20 @@ function saveUnimotivationalPosters() {
 function showUnmotivationalPosters() {
   unmotivationalPosters.forEach(unmotivationalPoster => {
     unmotivationalPostersGrid.innerHTML += `
-      <article class="mini-poster">
+      <article class="unmotivational-mini-poster">
         <img class="unmotivational-mini-poster img" src="${unmotivationalPoster.imageURL}" alt="">
-        <h1>${unmotivationalPoster.title}</h1>
-        <h3>${unmotivationalPoster.quote}</h3>
+        <h2>${unmotivationalPoster.title}</h2>
+        <h4>${unmotivationalPoster.quote}</h4>
       </article>
       `;
     });
   showAndHidePage(showMeUnmotivationalPosters, mainPoster)
 }
 
-function deleteSavedPosters() {
-  if (event.target.classList.contains('.unmotivational-posters-grid')) {
-    unmotivationalPosters.splice(index, 1)
-    showUnmotivationalPosters
-  }
-}
+// function deleteSavedPosters() {
+//   if (event.target.classList.contains('.unmotivational-posters-grid')) {
+//     unmotivationalPosters.splice(index, 1)
+//     showUnmotivationalPosters
+//   }
+// }
 

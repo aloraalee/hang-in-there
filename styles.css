@@ -110,12 +110,22 @@ button:hover {
   padding: 40px;
 }
 
+.unmotivational-posters {
+  display: flex;
+}
+
 .saved-posters-grid, 
 .unmotivational-posters-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
   padding: 20px;
+}
+
+.unmotivational-posters-grid {
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: space-evenly; */
 }
 
 .mini-poster {
@@ -126,9 +136,31 @@ button:hover {
   width: 425px;
 }
 
+.unmotivational-mini-poster {
+  background: grey;
+  color: white;
+  height: 340px;
+  padding: 25px;
+  width: 425px;
+  border-radius: 15px;
+}
+
+.unmotivational-mini-poster img {
+  height:250px;
+  width: 355px;
+}
+
 .mini-poster img {
   height:200px;
   width: 300px;
+}
+
+.unmotivational-mini-poster h2,
+.unmotivational-mini-poster h4,
+.unmotivational-delete {
+  color: black;
+  line-height: 1;
+  width: 90%;
 }
 
 .mini-poster h2,
@@ -137,6 +169,14 @@ button:hover {
   color: white;
   line-height: 1;
   width: 90%;
+}
+
+.unmotivational-mini-poster h2 {
+  font-size: 30px;
+  font-weight: normal;
+  letter-spacing: 5px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
 }
 
 .mini-poster h2 {
