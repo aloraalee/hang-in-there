@@ -379,10 +379,10 @@ function showUnmotivationalPosters() {
   showAndHidePage(showMeUnmotivationalPosters, mainPoster)
 }
 
-// function deleteSavedPosters() {
-//   if (event.target.classList.contains('.unmotivational-posters-grid')) {
-//     unmotivationalPosters.splice(index, 1)
-//     showUnmotivationalPosters
-//   }
-// }
+function deleteSavedPosters() {
+  if (event.target.classList.contains('.unmotivational-posters-grid')) {
+    unmotivationalPosters.splice(index, 1)
+    showUnmotivationalPosters
+  }
+}
 
