@@ -371,7 +371,7 @@ function showUnmotivationalPosters() {
   unmotivationalPosters.forEach((unmotivationalPoster, index) => {
     unmotivationalPostersGrid.innerHTML += `
       <article class="unmotivational-mini-poster" index="${index}">
-        <img class="unmotivational-mini-poster img" src="${unmotivationalPoster.imageURL}" alt="">
+        <img class="unmotivational-mini-poster-img" src="${unmotivationalPoster.imageURL}" alt="">
         <h2>${unmotivationalPoster.title}</h2>
         <h4>${unmotivationalPoster.quote}</h4>
       </article>
@@ -381,17 +381,7 @@ function showUnmotivationalPosters() {
 }
 
 function deleteSavedPosters() {
-  console.log('Delete function called');
-  console.log('event.target:',event.target)
   var clickedPoster = event.target.closest('.unmotivational-mini-poster');
-    if (clickedPoster) {
-      var index = (clickedPoster.getAttribute('index'))
-      console.log('Clicked poster:', clickedPoster);
-      console.log('Index:', index);
-        if (index < unmotivationalPosters.length) {
-          unmotivationalPosters.splice(index, 1);
-          showUnmotivationalPosters();
-        }
-    }
+    clickedPoster.remove()
 }
 
