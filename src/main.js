@@ -367,9 +367,10 @@ function saveUnimotivationalPosters() {
 }
 
 function showUnmotivationalPosters() {
-  unmotivationalPosters.forEach(unmotivationalPoster => {
+  unmotivationalPostersGrid.innerHTML = '';
+  unmotivationalPosters.forEach((unmotivationalPoster, index) => {
     unmotivationalPostersGrid.innerHTML += `
-      <article class="unmotivational-mini-poster">
+      <article class="unmotivational-mini-poster" index="${index}">
         <img class="unmotivational-mini-poster img" src="${unmotivationalPoster.imageURL}" alt="">
         <h2>${unmotivationalPoster.title}</h2>
         <h4>${unmotivationalPoster.quote}</h4>
@@ -380,9 +381,17 @@ function showUnmotivationalPosters() {
 }
 
 function deleteSavedPosters() {
-  if (event.target.classList.contains('.unmotivational-posters-grid')) {
-    unmotivationalPosters.splice(index, 1)
-    showUnmotivationalPosters
-  }
+  console.log('Delete function called');
+  console.log('event.target:',event.target)
+  var clickedPoster = event.target.closest('.unmotivational-mini-poster');
+    if (clickedPoster) {
+      var index = (clickedPoster.getAttribute('index'))
+      console.log('Clicked poster:', clickedPoster);
+      console.log('Index:', index);
+        if (index < unmotivationalPosters.length) {
+          unmotivationalPosters.splice(index, 1);
+          showUnmotivationalPosters();
+        }
+    }
 }
 
