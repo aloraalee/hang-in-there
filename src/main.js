@@ -1,4 +1,3 @@
-// query selector variables go here 👇
 var mainImg = document.querySelector('#main-img')
 var mainTitle = document.querySelector('#main-title')
 var mainQuote = document.querySelector('#main-quote')
@@ -18,8 +17,6 @@ var savePosterBtn = document.querySelector('#save-poster')
 var savedPostersGrid = document.querySelector('.saved-posters-grid')
 var unmotivationalBtn = document.querySelector('#unmotivational-posters-btn')
 var showMeUnmotivationalPosters = document.querySelector('.unmotivational-posters')
-// backToMainBtns should function together with a querySelectorAll? 
-// There is space to refactor later. 
 var backToMainBtnFromUnmotivational = document.querySelector('#back-to-main-from-unmotivation')
 var unmotivationalPostersGrid = document.querySelector('.unmotivational-posters-grid')
 var unmotivationalMiniPoster = document.querySelector('.unmotivational-mini-poster')
@@ -249,7 +246,6 @@ var savedPosters = [];
 var currentPoster;
 var unmotivationalPosters = [];
 
-// event listeners go here 👇
 window.addEventListener('load', updatePoster) 
 window.addEventListener('load', saveUnimotivationalPosters)
 randomPosterBtn.addEventListener('click', updatePoster)
@@ -265,7 +261,6 @@ backToMainBtnFromUnmotivational.addEventListener('click', takeMeBack)
 backToMainBtnFromUnmotivational.addEventListener('click', clearExistingContent)
 unmotivationalPostersGrid.addEventListener('dblclick', deleteSavedPosters)
 
-// functions and event handlers go here 👇
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
