@@ -337,7 +337,7 @@ function showSavedPosters() {
   savedPosters.forEach(savedPoster => {
       savedPostersGrid.innerHTML += `
       <article class="mini-poster">
-        <img class="mini-poster img" src="${savedPoster.imageURL}" alt="">
+        <img class="mini-poster img" src="${savedPoster.imageURL}" alt="Random motivational image">
         <h2>${savedPoster.title}</h2>
         <h4>${savedPoster.quote}</h4>
       </article>
