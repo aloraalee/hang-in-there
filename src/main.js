@@ -377,14 +377,10 @@ function showUnmotivationalPosters() {
 
 function deleteSavedPosters() {
   var clickedPoster = event.target.closest('.unmotivational-mini-poster');
-  console.log('Delete function called');
-  console.log('event.target:',event.target)
   var clickedPoster = event.target.closest('.unmotivational-mini-poster');
     if (clickedPoster) {
       var index = (clickedPoster.getAttribute('index'))
-      console.log('Clicked poster:', clickedPoster);
-      console.log('Index:', index);
-          unmotivationalPosters.splice(index, 1);
-          showUnmotivationalPosters();
+      unmotivationalPosters.splice(index, 1);
+      showUnmotivationalPosters();
     }
 }
